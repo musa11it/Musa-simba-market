@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout | Simba Supermarket</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header slim-header">
+      <div class="brand-bar">
+        <a class="brand-logo" href="index.html">🛒 Simba Market</a>
+        <div class="search-container">
+          <input
+            type="text"
+            id="search-input"
+            class="search-input"
+            placeholder="Search groceries, products..."
+            autocomplete="off"
+          />
+          <div class="search-results" id="search-results"></div>
+        </div>
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="category.html">Category</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="action-group">
+          <a class="action-link" href="signin.html">Sign In</a>
+          <a class="button button-primary" href="signup.html">Sign Up</a>
+          <a class="cart-link" href="cart.html">🛒 <span id="cart-count">0</span></a>
+          <a class="action-link" href="#" title="Wishlist" onclick="event.preventDefault();">❤️</a>
+          <button class="menu-toggle" onclick="toggleMobileMenu()">☰</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="page-intro checkout-intro">
+      <div>
+        <p class="eyebrow">Secure payment</p>
+        <h1>Complete your purchase in minutes.</h1>
+        <p>Enter your delivery details and card information to confirm your order.</p>
+      </div>
+      <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=900&q=80" alt="Payment checkout concept" />
+    </section>
+
+    <section class="checkout-panel">
+      <form id="checkout-form" class="form-card">
+        <h2>Delivery details</h2>
+        <div class="form-row">
+          <label for="checkout-name">Full name</label>
+          <input id="checkout-name" name="name" type="text" required placeholder="Jane Doe" />
+        </div>
+        <div class="form-row">
+          <label for="checkout-address">Address</label>
+          <input id="checkout-address" name="address" type="text" required placeholder="Street address, city" />
+        </div>
+        <div class="form-row">
+          <label for="checkout-phone">Phone number</label>
+          <input id="checkout-phone" name="phone" type="tel" required placeholder="+1 234 567 890" />
+        </div>
+        
+        <h2>Payment method</h2>
+        <div class="payment-methods">
+          <div class="payment-option" data-payment="momo" onclick="selectPayment('momo')">
+            <strong>📱 MOMO</strong><br>
+            <small>MTN Mobile Money</small>
+          </div>
+          <div class="payment-option" data-payment="airtel" onclick="selectPayment('airtel')">
+            <strong>📱 Airtel Money</strong><br>
+            <small>Airtel Money Transfer</small>
+          </div>
+          <div class="payment-option" data-payment="card" onclick="selectPayment('card')">
+            <strong>💳 Card</strong><br>
+            <small>Visa / Mastercard</small>
+          </div>
+          <div class="payment-option" data-payment="cash" onclick="selectPayment('cash')">
+            <strong>💵 Cash</strong><br>
+            <small>On Delivery</small>
+          </div>
+        </div>
+        <input type="hidden" id="payment-method" name="payment-method" value="card" />
+
+        <div id="card-payment" style="display: block;">
+          <h3>Card details</h3>
+          <div class="form-row">
+            <label for="checkout-card">Card number</label>
+            <input id="checkout-card" name="card" type="text" placeholder="1234 5678 9012 3456" maxlength="19" />
+          </div>
+          <div class="split-row">
+            <div>
+              <label for="checkout-expiry">Expiry</label>
+              <input id="checkout-expiry" name="expiry" type="text" placeholder="MM/YY" maxlength="5" />
+            </div>
+            <div>
+              <label for="checkout-cvv">CVV</label>
+              <input id="checkout-cvv" name="cvv" type="text" placeholder="123" maxlength="4" />
+            </div>
+          </div>
+        </div>
+
+        <div id="momo-payment" style="display: none;">
+          <h3>MTN Mobile Money</h3>
+          <div class="form-row">
+            <label for="momo-phone">MTN Phone number</label>
+            <input id="momo-phone" name="momo-phone" type="tel" placeholder="07XXXXXXXX" />
+          </div>
+          <p style="color: var(--muted); font-size: 0.9rem;">You will receive a prompt on your phone to confirm payment.</p>
+        </div>
+
+        <div id="airtel-payment" style="display: none;">
+          <h3>Airtel Money</h3>
+          <div class="form-row">
+            <label for="airtel-phone">Airtel Phone number</label>
+            <input id="airtel-phone" name="airtel-phone" type="tel" placeholder="07XXXXXXXX" />
+          </div>
+          <p style="color: var(--muted); font-size: 0.9rem;">You will receive a prompt on your phone to confirm payment.</p>
+        </div>
+
+        <div id="cash-payment" style="display: none;">
+          <h3>Cash on Delivery</h3>
+          <p style="color: var(--muted);">Please have exact change ready. Our delivery team will collect payment upon delivery.</p>
+        </div>
+
+        <button type="submit" class="button button-primary">Place order</button>
+        <p class="form-status" id="checkout-status"></p>
+      </form>
+      <div class="card-panel order-summary">
+        <h3>Order snapshot</h3>
+        <div id="checkout-summary"></div>
+      </div>
+    </section>
+  </div>
+  <footer class="site-footer">
+    <div>
+      <div class="footer-section">
+        <h4>Simba Market</h4>
+        <p style="margin: 0; color: var(--muted);">Premium groceries and household essentials delivered fast to your door.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="category.html">Shop</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Help & Support</h4>
+        <div class="footer-links">
+          <a href="contact.html">Contact Us</a>
+          <a href="#">Delivery Info</a>
+          <a href="#">Returns</a>
+          <a href="#">FAQ</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a class="social-icon" href="#" title="Facebook" onclick="event.preventDefault();">f</a>
+        <a class="social-icon" href="#" title="Twitter" onclick="event.preventDefault();">𝕏</a>
+        <a class="social-icon" href="#" title="Instagram" onclick="event.preventDefault();">📷</a>
+        <a class="social-icon" href="#" title="LinkedIn" onclick="event.preventDefault();">in</a>
+      </div>
+      <p style="margin-top: 16px; font-size: 0.9rem; color: var(--muted);">© 2026 Simba Market. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

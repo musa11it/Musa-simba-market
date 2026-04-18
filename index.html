@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simba Supermarket | Premium Online Grocery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="brand-bar">
+        <a class="brand-logo" href="index.html">🛒 Simba Market</a>
+        <div class="search-container">
+          <input
+            type="text"
+            id="search-input"
+            class="search-input"
+            placeholder="Search groceries, products..."
+            autocomplete="off"
+          />
+          <div class="search-results" id="search-results"></div>
+        </div>
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="category.html">Category</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="action-group">
+          <a class="action-link" href="signin.html">Sign In</a>
+          <a class="button button-primary" href="signup.html">Create Account</a>
+          <a class="cart-link" href="cart.html" title="Shopping cart">🛒 <span id="cart-count">0</span></a>
+          <a class="action-link" href="#" title="Wishlist" onclick="event.preventDefault(); alert('Wishlist feature: Click the ♡ icon on products to save favorites');">❤️</a>
+          <button class="menu-toggle" onclick="toggleMobileMenu()">☰</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero-panel">
+      <div class="hero-copy">
+        <p class="eyebrow">Fresh groceries delivered fast</p>
+        <h1>Advanced supermarket experience for your home kitchen.</h1>
+        <p>Shop premium quality groceries, household essentials, beauty essentials, and fresh produce with secure checkout and easy delivery.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="category.html">Browse Categories</a>
+          <a class="button button-secondary" href="contact.html">Talk to Support</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1516685018646-549d9397c50b?auto=format&fit=crop&w=900&q=80" alt="Fresh supermarket produce and groceries" />
+      </div>
+    </section>
+
+    <section class="featured-categories">
+      <div class="section-header">
+        <p class="eyebrow">All major categories</p>
+        <h2>Everything your household needs</h2>
+      </div>
+      <div class="categories-grid" id="category-grid"></div>
+    </section>
+
+    <section class="featured-products">
+      <div class="section-header">
+        <p class="eyebrow">Top picks for today</p>
+        <h2>Best-selling products with premium quality</h2>
+      </div>
+      <div class="product-grid" id="featured-products"></div>
+    </section>
+
+    <section class="value-panel">
+      <div class="value-card">
+        <h3>Trusted payments</h3>
+        <p>Secure checkout with payment simulation, order confirmation, and delivery tracking.</p>
+      </div>
+      <div class="value-card">
+        <h3>Fresh quality</h3>
+        <p>Fresh produce, dairy, meat, and pantry essentials picked from trusted suppliers.</p>
+      </div>
+      <div class="value-card">
+        <h3>Fast delivery</h3>
+        <p>Seamless ordering and local delivery options available with instant checkout flow.</p>
+      </div>
+    </section>
+
+    <section class="highlight-panel">
+      <div class="highlight-copy">
+        <p class="eyebrow">Why Simba Market?</p>
+        <h2>Modern grocery shopping for every home.</h2>
+        <p>From weekly groceries to specialty items and household essentials, our online marketplace makes ordering easy and reliable.</p>
+        <ul>
+          <li>Secure account creation and sign in</li>
+          <li>Category browsing with full product catalog</li>
+          <li>Cart, checkout, and payment flow with validation</li>
+        </ul>
+      </div>
+      <div class="highlight-image">
+        <img src="https://images.unsplash.com/photo-1556740767-69f85fbf6b30?auto=format&fit=crop&w=900&q=80" alt="Supermarket shoppers using online grocery service" />
+      </div>
+    </section>
+  </div>
+  <footer class="site-footer">
+    <div>
+      <div class="footer-section">
+        <h4>Simba Market</h4>
+        <p style="margin: 0; color: var(--muted);">Premium groceries and household essentials delivered fast to your door.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="category.html">Shop</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Help & Support</h4>
+        <div class="footer-links">
+          <a href="contact.html">Contact Us</a>
+          <a href="#">Delivery Info</a>
+          <a href="#">Returns</a>
+          <a href="#">FAQ</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a class="social-icon" href="#" title="Facebook" onclick="event.preventDefault();">f</a>
+        <a class="social-icon" href="#" title="Twitter" onclick="event.preventDefault();">𝕏</a>
+        <a class="social-icon" href="#" title="Instagram" onclick="event.preventDefault();">📷</a>
+        <a class="social-icon" href="#" title="LinkedIn" onclick="event.preventDefault();">in</a>
+      </div>
+      <p style="margin-top: 16px; font-size: 0.9rem; color: var(--muted);">© 2026 Simba Market. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

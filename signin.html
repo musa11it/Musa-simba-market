@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In | Simba Supermarket</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header slim-header">
+      <div class="brand-bar">
+        <a class="brand-logo" href="index.html">🛒 Simba Market</a>
+        <div class="search-container">
+          <input
+            type="text"
+            id="search-input"
+            class="search-input"
+            placeholder="Search groceries, products..."
+            autocomplete="off"
+          />
+          <div class="search-results" id="search-results"></div>
+        </div>
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="category.html">Category</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="action-group">
+          <a class="action-link" href="signin.html">Sign In</a>
+          <a class="button button-primary" href="signup.html">Sign Up</a>
+          <a class="cart-link" href="cart.html">🛒 <span id="cart-count">0</span></a>
+          <a class="action-link" href="#" title="Wishlist" onclick="event.preventDefault();">❤️</a>
+          <button class="menu-toggle" onclick="toggleMobileMenu()">☰</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="auth-panel">
+      <div class="auth-services">
+        <h2>Welcome Back</h2>
+        <ul class="service-list">
+          <li class="service-item">
+            <div class="service-item-text">
+              <h4>🚀 Fast Checkout</h4>
+              <p>Save your cart and check out in seconds</p>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-text">
+              <h4>📦 Track Orders</h4>
+              <p>Real-time delivery updates and tracking</p>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-text">
+              <h4>❤️ Wishlist</h4>
+              <p>Save favorite items for later</p>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-text">
+              <h4>💳 Secure Payment</h4>
+              <p>Multiple payment methods for convenience</p>
+            </div>
+          </li>
+          <li class="service-item">
+            <div class="service-item-text">
+              <h4>🛒 Easy Returns</h4>
+              <p>Hassle-free returns within 7 days</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="form-card auth-card">
+        <h1>Welcome back</h1>
+        <p>Sign in to manage your cart and complete checkout faster.</p>
+        <form id="signin-form">
+          <div class="form-row">
+            <label for="signin-email">Email</label>
+            <input id="signin-email" name="email" type="email" required placeholder="you@example.com" />
+          </div>
+          <div class="form-row">
+            <label for="signin-password">Password</label>
+            <input id="signin-password" name="password" type="password" required placeholder="Your password" />
+          </div>
+          <button type="submit" class="button button-primary">Sign in</button>
+          <p class="form-status" id="signin-status"></p>
+          <p class="auth-footer">Don't have an account? <a href="signup.html">Create one</a></p>
+        </form>
+      </div>
+    </section>
+  </div>
+  <footer class="site-footer">
+    <div>
+      <div class="footer-section">
+        <h4>Simba Market</h4>
+        <p style="margin: 0; color: var(--muted);">Premium groceries and household essentials delivered fast to your door.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="category.html">Shop</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Help & Support</h4>
+        <div class="footer-links">
+          <a href="contact.html">Contact Us</a>
+          <a href="#">Delivery Info</a>
+          <a href="#">Returns</a>
+          <a href="#">FAQ</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a class="social-icon" href="#" title="Facebook" onclick="event.preventDefault();">f</a>
+        <a class="social-icon" href="#" title="Twitter" onclick="event.preventDefault();">𝕏</a>
+        <a class="social-icon" href="#" title="Instagram" onclick="event.preventDefault();">📷</a>
+        <a class="social-icon" href="#" title="LinkedIn" onclick="event.preventDefault();">in</a>
+      </div>
+      <p style="margin-top: 16px; font-size: 0.9rem; color: var(--muted);">© 2026 Simba Market. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Simba Supermarket</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header slim-header">
+      <div class="brand-bar">
+        <a class="brand-logo" href="index.html">🛒 Simba Market</a>
+        <div class="search-container">
+          <input
+            type="text"
+            id="search-input"
+            class="search-input"
+            placeholder="Search groceries, products..."
+            autocomplete="off"
+          />
+          <div class="search-results" id="search-results"></div>
+        </div>
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="category.html">Category</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="action-group">
+          <a class="action-link" href="signin.html">Sign In</a>
+          <a class="button button-primary" href="signup.html">Sign Up</a>
+          <a class="cart-link" href="cart.html">🛒 <span id="cart-count">0</span></a>
+          <a class="action-link" href="#" title="Wishlist" onclick="event.preventDefault();">❤️</a>
+          <button class="menu-toggle" onclick="toggleMobileMenu()">☰</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="page-intro about-intro">
+      <div>
+        <p class="eyebrow">Our story</p>
+        <h1>Simba Supermarket is built for modern grocery shoppers.</h1>
+        <p>We combine a premium online shopping experience with fast delivery, trusted products, and a simple checkout path from sign up to payment.</p>
+      </div>
+      <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=900&q=80" alt="Supermarket team preparing orders" />
+    </section>
+
+    <section class="about-grid">
+      <article>
+        <h2>Our mission</h2>
+        <p>To deliver fresh, high-quality groceries and household essentials with the easiest online shopping experience. Every item is selected to make kitchen and home life better for every Rwandan family.</p>
+      </article>
+      <article>
+        <h2>What we offer</h2>
+        <ul>
+          <li>Complete category browsing for groceries, beauty, and home care</li>
+          <li>Secure sign up, sign in, cart, and checkout workflows</li>
+          <li>Multiple payment options: MOMO, Airtel Money, Cards, Cash on Delivery</li>
+          <li>24/7 AI chatbot support for instant help</li>
+        </ul>
+      </article>
+      <article>
+        <h2>Quality promise</h2>
+        <p>Every product is presented with clear pricing, category detail, and a polished layout so customers feel confident from their first view to order completion. Fresh produce daily, trusted brands, and excellent service.</p>
+      </article>
+    </section>
+
+    <section style="margin-top: 64px;">
+      <div class="section-header">
+        <p class="eyebrow">Our leadership</p>
+        <h2>Meet the Simba Market team</h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="Musa - CEO & Founder" />
+          <h3>Musa</h3>
+          <p>CEO & Founder</p>
+          <p style="color: var(--muted); font-size: 0.85rem; margin-top: 8px;">Visionary leader building Rwanda's premier online supermarket with innovation and customer focus.</p>
+          <p style="color: var(--accent); font-size: 0.9rem; margin-top: 8px;">📞 0787065734<br/>📧 itangishatsemus@gmail.com</p>
+        </div>
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=500&q=80" alt="Sarah Johnson - Operations Manager" />
+          <h3>Sarah Johnson</h3>
+          <p>Operations Manager</p>
+          <p style="color: var(--muted); font-size: 0.85rem; margin-top: 8px;">Ensures smooth daily operations and exceptional customer service delivery across all channels.</p>
+        </div>
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="Alex Chen - Tech Lead" />
+          <h3>Alex Chen</h3>
+          <p>Tech Lead</p>
+          <p style="color: var(--muted); font-size: 0.85rem; margin-top: 8px;">Builds robust, scalable technology solutions for seamless shopping experience.</p>
+        </div>
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=500&q=80" alt="Emma Wilson - Customer Success" />
+          <h3>Emma Wilson</h3>
+          <p>Customer Success Lead</p>
+          <p style="color: var(--muted); font-size: 0.85rem; margin-top: 8px;">Dedicated to solving customer problems and building lasting relationships with every shopper.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+  <footer class="site-footer">
+    <div>
+      <div class="footer-section">
+        <h4>Simba Market</h4>
+        <p style="margin: 0; color: var(--muted);">Premium groceries and household essentials delivered fast to your door.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="category.html">Shop</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Help & Support</h4>
+        <div class="footer-links">
+          <a href="contact.html">Contact Us</a>
+          <a href="#">Delivery Info</a>
+          <a href="#">Returns</a>
+          <a href="#">FAQ</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a class="social-icon" href="#" title="Facebook" onclick="event.preventDefault();">f</a>
+        <a class="social-icon" href="#" title="Twitter" onclick="event.preventDefault();">𝕏</a>
+        <a class="social-icon" href="#" title="Instagram" onclick="event.preventDefault();">📷</a>
+        <a class="social-icon" href="#" title="LinkedIn" onclick="event.preventDefault();">in</a>
+      </div>
+      <p style="margin-top: 16px; font-size: 0.9rem; color: var(--muted);">© 2026 Simba Market. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

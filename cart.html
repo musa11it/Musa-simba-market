@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart | Simba Supermarket</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header slim-header">
+      <div class="brand-bar">
+        <a class="brand-logo" href="index.html">🛒 Simba Market</a>
+        <div class="search-container">
+          <input
+            type="text"
+            id="search-input"
+            class="search-input"
+            placeholder="Search groceries, products..."
+            autocomplete="off"
+          />
+          <div class="search-results" id="search-results"></div>
+        </div>
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="category.html">Category</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="action-group">
+          <a class="action-link" href="signin.html">Sign In</a>
+          <a class="button button-primary" href="signup.html">Sign Up</a>
+          <a class="cart-link" href="cart.html">🛒 <span id="cart-count">0</span></a>
+          <a class="action-link" href="#" title="Wishlist" onclick="event.preventDefault();">❤️</a>
+          <button class="menu-toggle" onclick="toggleMobileMenu()">☰</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="page-intro cart-intro">
+      <div>
+        <p class="eyebrow">Your shopping cart</p>
+        <h1>Review your order before checkout.</h1>
+        <p>Update quantities, remove items, and proceed with the secure payment simulation.</p>
+      </div>
+      <img src="https://images.unsplash.com/photo-1536305030014-7a0667c4b1a0?auto=format&fit=crop&w=900&q=80" alt="Shopping cart full of fresh groceries" />
+    </section>
+
+    <section class="cart-panel">
+      <div id="cart-items"></div>
+      <div class="checkout-summary card-panel">
+        <h2>Order summary</h2>
+        <div class="summary-row">
+          <span>Items total</span>
+          <span id="summary-subtotal">$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Delivery fee</span>
+          <span>$5.00</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total</span>
+          <span id="summary-total">$0.00</span>
+        </div>
+        <button id="checkout-button" class="button button-primary">Proceed to Checkout</button>
+        <p class="form-status" id="cart-status"></p>
+      </div>
+    </section>
+  </div>
+  <footer class="site-footer">
+    <div>
+      <div class="footer-section">
+        <h4>Simba Market</h4>
+        <p style="margin: 0; color: var(--muted);">Premium groceries and household essentials delivered fast to your door.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="category.html">Shop</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Help & Support</h4>
+        <div class="footer-links">
+          <a href="contact.html">Contact Us</a>
+          <a href="#">Delivery Info</a>
+          <a href="#">Returns</a>
+          <a href="#">FAQ</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a class="social-icon" href="#" title="Facebook" onclick="event.preventDefault();">f</a>
+        <a class="social-icon" href="#" title="Twitter" onclick="event.preventDefault();">𝕏</a>
+        <a class="social-icon" href="#" title="Instagram" onclick="event.preventDefault();">📷</a>
+        <a class="social-icon" href="#" title="LinkedIn" onclick="event.preventDefault();">in</a>
+      </div>
+      <p style="margin-top: 16px; font-size: 0.9rem; color: var(--muted);">© 2026 Simba Market. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
