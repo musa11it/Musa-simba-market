@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Super Admin Dashboard - Simba Supermarket</title>
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <h2>🦁 Simba Admin</h2>
+      </div>
+      <nav class="nav-menu">
+        <a href="#dashboard" class="nav-item active" data-section="dashboard">
+          <span class="icon">📊</span> Dashboard
+        </a>
+        <a href="#branches" class="nav-item" data-section="branches">
+          <span class="icon">🏪</span> Branches
+        </a>
+        <a href="#admins" class="nav-item" data-section="admins">
+          <span class="icon">👥</span> Branch Admins
+        </a>
+        <a href="#analytics" class="nav-item" data-section="analytics">
+          <span class="icon">📈</span> Analytics
+        </a>
+        <a href="#settings" class="nav-item" data-section="settings">
+          <span class="icon">⚙️</span> Settings
+        </a>
+      </nav>
+      <div class="user-profile">
+        <img id="userAvatar" src="https://via.placeholder.com/40" alt="User">
+        <div>
+          <p id="userName" class="user-name">Loading...</p>
+          <small>Super Admin</small>
+        </div>
+        <button id="logoutBtn" class="logout-btn">🚪</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="header">
+        <h1 id="pageTitle">Dashboard</h1>
+        <div class="header-actions">
+          <input type="text" class="search-input" placeholder="Search...">
+          <button class="notification-btn">🔔</button>
+        </div>
+      </header>
+
+      <!-- Dashboard Section -->
+      <section id="dashboard" class="content-section active">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <h3>Total Branches</h3>
+            <p class="stat-number" id="totalBranches">0</p>
+            <small class="stat-change">↑ Active</small>
+          </div>
+          <div class="stat-card">
+            <h3>Branch Admins</h3>
+            <p class="stat-number" id="totalAdmins">0</p>
+            <small class="stat-change">Active accounts</small>
+          </div>
+          <div class="stat-card">
+            <h3>Total Orders</h3>
+            <p class="stat-number" id="totalOrders">0</p>
+            <small class="stat-change">All time</small>
+          </div>
+          <div class="stat-card">
+            <h3>Total Revenue</h3>
+            <p class="stat-number" id="totalRevenue">$0</p>
+            <small class="stat-change">Completed orders</small>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="chart-container">
+            <h2>Revenue Trend (Last 30 Days)</h2>
+            <canvas id="revenueChart"></canvas>
+          </div>
+
+          <div class="recent-orders">
+            <h2>Recent Orders</h2>
+            <table class="orders-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Branch</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody id="ordersTable">
+                <tr><td colspan="5">Loading...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Branches Section -->
+      <section id="branches" class="content-section">
+        <div class="section-header">
+          <h2>Manage Branches</h2>
+          <button class="btn btn-primary" id="addBranchBtn">+ Add Branch</button>
+        </div>
+
+        <div class="branches-grid" id="branchesGrid">
+          <p>Loading...</p>
+        </div>
+      </section>
+
+      <!-- Admins Section -->
+      <section id="admins" class="content-section">
+        <div class="section-header">
+          <h2>Branch Admins</h2>
+          <button class="btn btn-primary" id="addAdminBtn">+ Create Admin</button>
+        </div>
+
+        <table class="admins-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Branch</th>
+              <th>Status</th>
+              <th>Last Login</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="adminsTable">
+            <tr><td colspan="6">Loading...</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Analytics Section -->
+      <section id="analytics" class="content-section">
+        <h2>Analytics & Reports</h2>
+        <div class="analytics-filter">
+          <select id="analyticsPeriod">
+            <option value="7">Last 7 Days</option>
+            <option value="30" selected>Last 30 Days</option>
+            <option value="90">Last 90 Days</option>
+          </select>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="chart-container">
+            <h3>Revenue by Branch</h3>
+            <canvas id="branchRevenueChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- Settings Section -->
+      <section id="settings" class="content-section">
+        <h2>Settings</h2>
+        <div class="settings-panel">
+          <div class="setting-group">
+            <label>Change Password</label>
+            <input type="password" placeholder="Current Password" class="form-input">
+            <input type="password" placeholder="New Password" class="form-input">
+            <input type="password" placeholder="Confirm Password" class="form-input">
+            <button class="btn btn-primary">Update Password</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal for Add Branch -->
+  <div id="addBranchModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Add New Branch</h2>
+      <form id="branchForm">
+        <input type="text" id="branchName" placeholder="Branch Name" class="form-input" required>
+        <input type="text" id="branchLocation" placeholder="Location" class="form-input" required>
+        <input type="text" id="branchPhone" placeholder="Phone" class="form-input">
+        <input type="email" id="branchEmail" placeholder="Email" class="form-input">
+        <textarea id="branchAddress" placeholder="Address" class="form-input"></textarea>
+        <button type="submit" class="btn btn-primary">Create Branch</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal for Add Admin -->
+  <div id="addAdminModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Create Branch Admin</h2>
+      <form id="adminForm">
+        <input type="text" id="adminName" placeholder="Admin Name" class="form-input" required>
+        <input type="email" id="adminEmail" placeholder="Email" class="form-input" required>
+        <input type="password" id="adminPassword" placeholder="Password" class="form-input" required>
+        <select id="adminBranch" class="form-input" required>
+          <option value="">Select Branch</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Create Admin</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../js/api-client.js"></script>
+  <script src="../js/super-admin-dashboard.js"></script>
+</body>
+</html>

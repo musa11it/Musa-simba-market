@@ -892,7 +892,7 @@ textarea {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: var(--accent);
+  background: #fc7d00;
   color: white;
   border: none;
   cursor: pointer;
@@ -927,7 +927,7 @@ textarea {
 }
 
 .chatbot-header {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+  background: linear-gradient(135deg, #fc7d00, #ff8c00);
   color: white;
   padding: 18px;
   border-radius: 16px 16px 0 0;
@@ -986,7 +986,7 @@ textarea {
 }
 
 .chatbot-input button {
-  background: var(--accent);
+  background: #fc7d00;
   color: white;
   border: none;
   border-radius: 50%;
@@ -1000,7 +1000,7 @@ textarea {
 }
 
 .chatbot-input button:hover {
-  background: #991b1b;
+  background: #e66b00;
 }
 
 .payment-methods {

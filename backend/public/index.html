@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simba Supermarket - Dashboard Selection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .dashboards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .dashboard-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #FF6B35, #FFA500);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .dashboard-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .dashboard-card.super-admin::before {
+            background: linear-gradient(90deg, #FF6B35, #FFA500);
+        }
+
+        .dashboard-card.branch-admin::before {
+            background: linear-gradient(90deg, #004E89, #0080B5);
+        }
+
+        .icon {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-card h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .dashboard-card.super-admin h2 {
+            color: #FF6B35;
+        }
+
+        .dashboard-card.branch-admin h2 {
+            color: #004E89;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .features li {
+            padding: 10px 0;
+            color: #666;
+            font-size: 0.95em;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+
+        .features li:last-child {
+            border-bottom: none;
+        }
+
+        .features li::before {
+            content: '✓';
+            color: #4CAF50;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .btn {
+            display: inline-block;
+            background: white;
+            border: 2px solid #FF6B35;
+            color: #FF6B35;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .dashboard-card.super-admin .btn {
+            border-color: #FF6B35;
+            color: #FF6B35;
+        }
+
+        .dashboard-card.super-admin .btn:hover {
+            background: #FF6B35;
+            color: white;
+        }
+
+        .dashboard-card.branch-admin .btn {
+            border-color: #004E89;
+            color: #004E89;
+        }
+
+        .dashboard-card.branch-admin .btn:hover {
+            background: #004E89;
+            color: white;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .info-box h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .info-box p {
+            color: #666;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .credentials {
+            background: #f9f9f9;
+            border-left: 4px solid #FF6B35;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        .credentials strong {
+            color: #FF6B35;
+        }
+
+        .step-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .step-box h3 {
+            color: #FF6B35;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background: #FF6B35;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content p {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .step-content code {
+            background: #f0f0f0;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .dashboards {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .dashboard-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🦁 Simba Supermarket</h1>
+            <p>Multi-Branch Admin Dashboard System</p>
+        </div>
+
+        <!-- Setup Instructions -->
+        <div class="info-box">
+            <h3>🚀 Getting Started</h3>
+            <p>First time setup? Make sure MongoDB is running on your system.</p>
+            <div class="credentials">
+                <p><strong>Default Login Credentials:</strong></p>
+                <p>📧 Email: <strong>superadmin@simba.com</strong></p>
+                <p>🔐 Password: <strong>Change@123</strong></p>
+                <p style="margin-top: 10px; color: #e74c3c;">⚠️ Change password after first login!</p>
+            </div>
+        </div>
+
+        <!-- Dashboard Selection -->
+        <div class="dashboards">
+            <!-- Super Admin Dashboard -->
+            <a href="/dashboards/super-admin.html" class="dashboard-card super-admin">
+                <div class="icon">👑</div>
+                <h2>Super Admin</h2>
+                <p style="color: #666; margin-bottom: 20px;">Full system control across all branches</p>
+                
+                <ul class="features">
+                    <li>System Dashboard & KPIs</li>
+                    <li>Branch Management</li>
+                    <li>Admin Account Control</li>
+                    <li>System-wide Analytics</li>
+                    <li>Order Monitoring</li>
+                    <li>Revenue Reports</li>
+                </ul>
+
+                <button class="btn">Access Super Admin →</button>
+            </a>
+
+            <!-- Branch Admin Dashboard -->
+            <a href="/dashboards/branch-admin.html" class="dashboard-card branch-admin">
+                <div class="icon">🏪</div>
+                <h2>Branch Admin</h2>
+                <p style="color: #666; margin-bottom: 20px;">Manage single branch operations</p>
+                
+                <ul class="features">
+                    <li>Branch Dashboard</li>
+                    <li>Product Inventory</li>
+                    <li>Order Management</li>
+                    <li>Branch Analytics</li>
+                    <li>Low-Stock Alerts</li>
+                    <li>Revenue Tracking</li>
+                </ul>
+
+                <button class="btn">Access Branch Admin →</button>
+            </a>
+        </div>
+
+        <!-- Setup Steps -->
+        <div class="step-box">
+            <h3>📋 First-Time Setup Steps</h3>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <p><strong>Ensure MongoDB is Running</strong></p>
+                    <p>MongoDB should be running on <code>mongodb://localhost:27017</code></p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <p><strong>Initialize Database</strong></p>
+                    <p>Run in terminal: <code>npm run init</code></p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <p><strong>Start the Server</strong></p>
+                    <p>Run in terminal: <code>npm run dev</code> or <code>node src/server.js</code></p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <p><strong>Login</strong></p>
+                    <p>Use the default credentials above. Click either dashboard to proceed.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <p><strong>Create Your First Branch</strong></p>
+                    <p>As Super Admin: Go to "Branches" → "Add Branch" → Fill in details</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="step-box" style="margin-top: 30px; background: rgba(255, 255, 255, 0.95);">
+            <h3 style="color: #004E89;">📚 Documentation</h3>
+            <p style="color: #666; margin-bottom: 15px;">
+                For complete documentation, check the backend folder:
+            </p>
+            <div style="background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                <p style="color: #666; margin: 5px 0;"><strong>PROJECT_INDEX.md</strong> - Complete project navigation</p>
+                <p style="color: #666; margin: 5px 0;"><strong>SETUP_GUIDE.md</strong> - Detailed setup instructions</p>
+                <p style="color: #666; margin: 5px 0;"><strong>API_DOCS.md</strong> - API endpoint reference</p>
+                <p style="color: #666; margin: 5px 0;"><strong>QUICK_REFERENCE.md</strong> - Quick command guide</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

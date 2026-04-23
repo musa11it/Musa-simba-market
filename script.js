@@ -494,6 +494,7 @@ function initializePage() {
   handleQueryCategory();
   renderAccountState();
   bindSearchInput();
+  updateWishlistButtons();
   initializeChatbot();
 }
 
